@@ -34,6 +34,10 @@ public final class FileServiceImpl implements FileService {
         return packages;
     }
 
+    /**
+     * Read each line into a Package Object
+     *
+     */
     private final Package readPackage(final String line) {
         List<Item> items = new LinkedList<>();
         final String[] lineParts = line.split(WEIGHT_ITEMS_SPLIT_REGEX);

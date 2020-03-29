@@ -8,6 +8,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Dynamic Programming solution of the 0-1 Knapsack problem
+ *
+ */
 public final class PackagePackingSolverImpl implements PackagePackingSolver {
 
     @Override
