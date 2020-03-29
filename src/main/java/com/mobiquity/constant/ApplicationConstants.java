@@ -24,4 +24,5 @@ public class ApplicationConstants {
 
     private ApplicationConstants() {
     }
+
 }
