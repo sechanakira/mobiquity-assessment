@@ -1,5 +1,6 @@
 package com.mobiquity.file;
 
+import com.mobiquity.exception.APIException;
 import com.mobiquity.model.Item;
 import com.mobiquity.model.Package;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FileServiceImplTest {
 
+    private static final String EXAMPLE_INPUT = "example_input";
     private static FileService fileService;
 
     @BeforeAll
@@ -21,8 +23,8 @@ public class FileServiceImplTest {
     }
 
     @Test
-    public void testReadFile() throws Exception {
-        final String filePath = getClass().getClassLoader().getResource("example_input").getPath();
+    public void testReadFile() throws APIException {
+        final String filePath = getClass().getClassLoader().getResource(EXAMPLE_INPUT).getPath();
         final List<Package> packages = fileService.readFile(filePath);
         final List<Item> package1Items = new LinkedList<>();
         package1Items.add(new Item(1, 53.38, Double.valueOf(45)));
