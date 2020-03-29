@@ -40,7 +40,7 @@ public class Packer {
         return result.toString().trim();
     }
 
-    private static void checkConstraints(final List<Package> packages, final String filePath) throws APIException {
+    public static void checkConstraints(final List<Package> packages, final String filePath) throws APIException {
         if (packages.isEmpty()) {
             throw new APIException(NO_PACKAGES_COULD_BE_READ_FOR_PATH + filePath);
         }
