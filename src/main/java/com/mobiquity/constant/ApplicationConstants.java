@@ -12,6 +12,15 @@ public class ApplicationConstants {
     public static final String LINE_SEPARATOR = "line.separator";
     public static final String EMPTY_RESULT = "-";
     public static final String DELIMITER = ",";
+    public static final String WEIGHT_ITEMS_SPLIT_REGEX = ":";
+    public static final String ITEM_SPLIT_REGEX = " ";
+    public static final char OPENING_BRACKET = '(';
+    public static final char EMPTY_CHAR = ' ';
+    public static final char CLOSING_BRACKET = ')';
+    public static final String ITEM_COMPONENT_SPLIT_REGEX = ",";
+    public static final int FIRST_ITEM_INDEX = 0;
+    public static final int SECOND_ITEM_INDEX = 1;
+    public static final int THIRD_ITEM_INDEX = 2;
 
     private ApplicationConstants() {
     }

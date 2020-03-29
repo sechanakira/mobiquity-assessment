@@ -15,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import static com.mobiquity.constant.ApplicationConstants.*;
+
 public final class FileServiceImpl implements FileService {
 
     private static final Logger LOGGER = Logger.getLogger(FileServiceImpl.class.getName());
@@ -34,15 +36,15 @@ public final class FileServiceImpl implements FileService {
 
     private final Package readPackage(final String line) {
         List<Item> items = new LinkedList<>();
-        final String[] lineParts = line.split(":");
-        final Double weight = Double.parseDouble(lineParts[0].trim());
-        Arrays.stream(lineParts[1].trim().split(" ")).forEach(item -> {
-            String[] itemParts = item.replace('(', ' ')
-                    .replace(')', ' ')
-                    .split(",");
-            final Integer index = Integer.parseInt(itemParts[0].trim());
-            final Double itemWeight = Double.parseDouble(itemParts[1].trim());
-            final Double cost = Double.parseDouble(itemParts[2].substring(1).trim());
+        final String[] lineParts = line.split(WEIGHT_ITEMS_SPLIT_REGEX);
+        final Double weight = Double.parseDouble(lineParts[FIRST_ITEM_INDEX].trim());
+        Arrays.stream(lineParts[1].trim().split(ITEM_SPLIT_REGEX)).forEach(item -> {
+            String[] itemParts = item.replace(OPENING_BRACKET, EMPTY_CHAR)
+                    .replace(CLOSING_BRACKET, EMPTY_CHAR)
+                    .split(ITEM_COMPONENT_SPLIT_REGEX);
+            final Integer index = Integer.parseInt(itemParts[FIRST_ITEM_INDEX].trim());
+            final Double itemWeight = Double.parseDouble(itemParts[SECOND_ITEM_INDEX].trim());
+            final Double cost = Double.parseDouble(itemParts[THIRD_ITEM_INDEX].substring(SECOND_ITEM_INDEX).trim());
             items.add(new Item(index, itemWeight, cost));
         });
         return new Package(weight, items);
